@@ -2,7 +2,13 @@
   <v-app>
     <v-navigation-drawer permanent expand-on-hover app>
       <v-list nav dense>
-        <router-link to="/">Home</router-link> |
+        <v-list-item to="/" link>
+          <v-list-item-icon>
+            <v-icon>mdi-home</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Home</v-list-item-title>
+        </v-list-item>
+
         <router-link to="/signin">Signin</router-link> |
         <router-link to="/signup">Signup</router-link> |
         <logout/>
