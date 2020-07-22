@@ -4,17 +4,17 @@
       <div>
         <label>Nome</label>
         <input type="text" name="name" v-model="name">
-        <span v-if="errors && errors.name">{{  errors.name[0] }}</span>
+        <span v-if="errors && errors.name">{{ errors.name[0] }}</span>
       </div>
       <div>
         <label>E-mail</label>
         <input type="email" name="email" v-model="email">
-        <span v-if="errors && errors.email">{{  errors.email[0] }}</span>
+        <span v-if="errors && errors.email">{{ errors.email[0] }}</span>
       </div>
       <div>
         <label>Senha</label>
         <input type="password" name="password" v-model="password">
-        <span v-if="errors && errors.password">{{  errors.password[0] }}</span>
+        <span v-if="errors && errors.password">{{ errors.password[0] }}</span>
       </div>
       <div>
         <label>Confirmar senha</label>
