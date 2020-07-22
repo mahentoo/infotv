@@ -6,7 +6,12 @@
       <router-link to="/signup">Signup</router-link> |
       <logout/>
     </div>
-    <router-view/>
+
+    <v-content>
+      <v-container class="fill-height" fluid>
+        <router-view/>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
