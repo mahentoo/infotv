@@ -10,7 +10,7 @@
       clear () {
         window.localStorage.clear();
 
-        this.$router.replace('/login');
+        this.$router.replace('/signin');
       },
     },
   };

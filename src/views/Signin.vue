@@ -21,7 +21,7 @@
   const axios = require('axios');
 
   export default {
-    name: 'Login',
+    name: 'Signin',
 
     data: () => ({
       email: '',
