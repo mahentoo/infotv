@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <form @click.prevent="signup()">
+    <form @submit.prevent="signup()">
       <div>
         <label>Nome</label>
         <input type="text" name="name" v-model="name">
