@@ -3,11 +3,24 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/login">Login</router-link> |
-      <router-link to="/register">Register</router-link>
+      <router-link to="/register">Register</router-link> |
+      <logout/>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+  // @ is an alias to /src
+  import Logout from '@/components/Logout.vue'
+
+  export default {
+    name: 'Home',
+    components: {
+      Logout,
+    },
+  };
+</script>
 
 <style>
 #app {
