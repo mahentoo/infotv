@@ -9,7 +9,13 @@
           <v-list-item-title>Home</v-list-item-title>
         </v-list-item>
 
-        <router-link to="/signin">Signin</router-link> |
+        <v-list-item to="/signup" link>
+          <v-list-item-icon>
+            <v-icon>mdi-face</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Sign Up</v-list-item-title>
+        </v-list-item>
+
         <router-link to="/signup">Signup</router-link> |
         <logout/>
       </v-list>
