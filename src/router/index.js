@@ -11,10 +11,15 @@ Vue.use(VueRouter)
     component: Home
   },
   {
+    path: '/signin',
+    name: 'Signin',
+    component: () => import('../views/Signin.vue'),
+  },
+  {
     path: '/signup',
     name: 'Signup',
     component: () => import('../views/Signup.vue'),
-  }
+  },
 ]
 
 const router = new VueRouter({
