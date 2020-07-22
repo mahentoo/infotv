@@ -44,6 +44,10 @@
             return;
           }
 
+          window.localStorage.setItem('token', data.response.token);
+          window.localStorage.setItem('user.name', data.response.user.name);
+          window.localStorage.setItem('user.email', data.response.user.email);
+
           this.$router.replace('/');
         })
         .catch((error) => {
