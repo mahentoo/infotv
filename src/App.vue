@@ -1,10 +1,12 @@
 <template>
   <v-app>
     <v-navigation-drawer permanent expand-on-hover app>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/signin">Signin</router-link> |
-      <router-link to="/signup">Signup</router-link> |
-      <logout/>
+      <v-list nav dense>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/signin">Signin</router-link> |
+        <router-link to="/signup">Signup</router-link> |
+        <logout/>
+      </v-list>
     </v-navigation-drawer>
 
     <v-content>
