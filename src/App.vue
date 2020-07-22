@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/signin">Signin</router-link> |
@@ -7,7 +7,7 @@
       <logout/>
     </div>
     <router-view/>
-  </div>
+  </v-app>
 </template>
 
 <script>
