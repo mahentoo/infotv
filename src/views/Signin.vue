@@ -24,11 +24,9 @@
     name: 'Signin',
 
     data: () => ({
-      name: '',
       email: '',
-      password: '',
-      password_confirmation: '',
       error: '',
+      password: '',
     }),
 
     methods: {
