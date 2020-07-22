@@ -16,7 +16,13 @@
           <v-list-item-title>Sign Up</v-list-item-title>
         </v-list-item>
 
-        <router-link to="/signup">Signup</router-link> |
+        <v-list-item to="/signin" link>
+          <v-list-item-icon>
+            <v-icon>mdi-lock-open</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Sign In</v-list-item-title>
+        </v-list-item>
+
         <logout/>
       </v-list>
     </v-navigation-drawer>
