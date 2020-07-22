@@ -2,6 +2,10 @@
   <div class="register">
     <form>
       <div>
+        <label>Nome</label>
+        <input type="text" name="name" v-model="name" required>
+      </div>
+      <div>
         <label>E-mail</label>
         <input type="email" name="email" v-model="email" required>
       </div>
@@ -25,9 +29,10 @@
     name: 'Signup',
 
     data: () => ({
+      name: '',
       email: '',
       password: '',
-      'password_confirmation': '',
+      password_confirmation: '',
     }),
   };
 </script>
