@@ -15,7 +15,7 @@
   import Logout from '@/components/Logout.vue'
 
   export default {
-    name: 'Home',
+    name: 'App',
     components: {
       Logout,
     },
