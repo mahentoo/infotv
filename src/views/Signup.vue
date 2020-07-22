@@ -43,6 +43,8 @@
 
     methods: {
       signup () {
+        this.errors = null;
+
         axios.post('http://front-test.diga.net.br/api/signup', {
           name: this.name,
           email: this.email,
