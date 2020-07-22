@@ -31,7 +31,7 @@
   const axios = require('axios');
 
   export default {
-    name: 'Register',
+    name: 'Signup',
 
     data: () => ({
       name: '',
