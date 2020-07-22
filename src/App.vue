@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <div id="nav">
+    <v-navigation-drawer permanent expand-on-hover app>
       <router-link to="/">Home</router-link> |
       <router-link to="/signin">Signin</router-link> |
       <router-link to="/signup">Signup</router-link> |
       <logout/>
-    </div>
+    </v-navigation-drawer>
 
     <v-content>
       <v-container class="fill-height" fluid>
