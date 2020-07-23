@@ -1,6 +1,18 @@
 <template>
   <v-container fluid>
-    <movie-upload :token="token"></movie-upload>
+    <div class="text-right">
+      <v-btn @click="showUpload = ! showUpload" dark rounded v-if="showUpload">
+        Cancelar
+      </v-btn>
+      <v-btn color="primary" @click="showUpload = ! showUpload" dark rounded v-else>
+        Enviar vídeo
+      </v-btn>
+    </div>
+    <v-layout row wrap>
+      <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
+        <movie-upload :token="token" v-show="showUpload"></movie-upload>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
@@ -16,6 +28,7 @@
 
     data: () => ({
       token: localStorage.getItem('user.token'),
+      showUpload: false,
     }),
 
     watch: {
