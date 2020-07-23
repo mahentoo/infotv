@@ -9,7 +9,7 @@
       </v-btn>
     </v-flex>
     <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
-      <movie-upload :token="token" @close="showUpload = false" v-show="showUpload"></movie-upload>
+      <movie-upload :token="token" @added="showUpload = false" v-show="showUpload"></movie-upload>
     </v-flex>
 
     <v-flex xs12 mt-3 mx-5>

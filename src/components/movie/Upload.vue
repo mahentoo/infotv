@@ -115,8 +115,9 @@
               return;
             }
 
+            this.$emit('added');
+
             Bus.$emit('movieAdded');
-            this.$emit('close');
           })
           .catch((error) => {
             console.log(error);
