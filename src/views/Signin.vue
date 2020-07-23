@@ -62,28 +62,29 @@
       signin () {
         this.error = '';
 
-        axios.post('http://front-test.diga.net.br/api/signin', {
-          email: this.email,
-          password: this.password,
-        })
-        .then(({ data }) => {
-          if (data.error) {
-            this.error = data.response.message;
+        axios
+          .post('http://front-test.diga.net.br/api/signin', {
+            email: this.email,
+            password: this.password,
+          })
+          .then(({ data }) => {
+            if (data.error) {
+              this.error = data.response.message;
 
-            return;
-          }
+              return;
+            }
 
-          localStorage.setItem('user.name', data.response.user.name);
-          localStorage.setItem('user.email', data.response.user.email);
-          localStorage.setItem('user.token', data.response.token);
+            localStorage.setItem('user.name', data.response.user.name);
+            localStorage.setItem('user.email', data.response.user.email);
+            localStorage.setItem('user.token', data.response.token);
 
-          Bus.$emit('currentUserUpdated');
+            Bus.$emit('currentUserUpdated');
 
-          this.$router.push('/main');
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+            this.$router.push('/main');
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       },
     },
   };

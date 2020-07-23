@@ -90,24 +90,25 @@
       signup () {
         this.errors = null;
 
-        axios.post('http://front-test.diga.net.br/api/signup', {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          password_confirmation: this.password_confirmation,
-        })
-        .then(({ data }) => {
-          if (data.error) {
-            this.errors = data.response.validation;
+        axios
+          .post('http://front-test.diga.net.br/api/signup', {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.password_confirmation,
+          })
+          .then(({ data }) => {
+            if (data.error) {
+              this.errors = data.response.validation;
 
-            return;
-          }
+              return;
+            }
 
-          this.$router.push('/');
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+            this.$router.push('/');
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       },
     },
   };
