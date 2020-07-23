@@ -37,10 +37,16 @@
                 required
               ></v-text-field>
             </v-flex>
-            <div>
-              <label>Confirmar senha</label>
-              <input type="password" name="password_confirmation" v-model="password_confirmation">
-            </div>
+            <v-flex>
+              <v-text-field
+                id="password_confirmation"
+                name="password_confirmation"
+                label="Confirmar senha"
+                type="password"
+                v-model="password_confirmation"
+                required
+              ></v-text-field>
+            </v-flex>
             <div>
               <button type="submit">Registrar</button>
             </div>
