@@ -7,11 +7,16 @@
       <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
         <v-form @submit.prevent="signup()">
           <v-layout column>
-            <div>
-              <label>Nome</label>
-              <input type="text" name="name" v-model="name">
-              <span v-if="errors && errors.name">{{ errors.name[0] }}</span>
-            </div>
+            <v-flex>
+              <v-text-field
+                id="name"
+                name="name"
+                label="Nome"
+                type="text"
+                v-model="name"
+                required
+              ></v-text-field>
+            </v-flex>
             <div>
               <label>E-mail</label>
               <input type="email" name="email" v-model="email">
