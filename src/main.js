@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import vuetify from './plugins/vuetify';
 
+Vue.component('MovieCard', require('./components/movie/Card.vue').default);
 Vue.component('MovieList', require('./components/movie/List.vue').default);
 Vue.component('MovieUpload', require('./components/movie/Upload.vue').default);
 
