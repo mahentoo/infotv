@@ -1,19 +1,24 @@
 <template>
   <v-container fluid>
-    <form @submit.prevent="signin()">
-      <div>
-        <label>E-mail</label>
-        <input type="email" name="email" v-model="email">
-      </div>
-      <div>
-        <label>Senha</label>
-        <input type="password" name="password" v-model="password">
-      </div>
-      <div v-if="error">{{ error }}</div>
-      <div>
-        <button type="submit">Entrar</button>
-      </div>
-    </form>
+    <v-layout row wrap>
+      <v-flex class="text-center" xs12 mt-5>
+        <h1>Entrar</h1>
+      </v-flex>
+      <form @submit.prevent="signin()">
+        <div>
+          <label>E-mail</label>
+          <input type="email" name="email" v-model="email">
+        </div>
+        <div>
+          <label>Senha</label>
+          <input type="password" name="password" v-model="password">
+        </div>
+        <div v-if="error">{{ error }}</div>
+        <div>
+          <button type="submit">Entrar</button>
+        </div>
+      </form>
+    </v-layout>
   </v-container>
 </template>
 
