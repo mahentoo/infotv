@@ -4,6 +4,7 @@ import router from './router';
 import vuetify from './plugins/vuetify';
 
 Vue.component('MovieList', require('./components/movie/List.vue').default);
+Vue.component('MovieUpload', require('./components/movie/Upload.vue').default);
 
 Vue.config.productionTip = false;
 
