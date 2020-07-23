@@ -7,7 +7,7 @@
           name="name"
           label="Nome"
           type="text"
-          v-model="movie.name"
+          v-model="name"
           required
         ></v-text-field>
       </v-flex>
@@ -38,18 +38,20 @@
     },
 
     data: () => ({
-      movie: {
-        name: '',
-      },
+      name: '',
       errors: null,
     }),
 
     methods: {
       upload () {
+        let formData = new FormData();
+
+        formData.append('name', this.name);
+
         this.errors = null;
 
         axios
-          .post('http://front-test.diga.net.br/api/movie/upload', this.movie, {
+          .post('http://front-test.diga.net.br/api/movie/upload', formData, {
             headers: {
               Authorization: `Bearer ${this.token}`,
             },
