@@ -12,7 +12,9 @@
       <movie-upload :token="token" @close="showUpload = false" v-show="showUpload"></movie-upload>
     </v-flex>
 
-    <movie-list :token="token"></movie-list>
+    <v-flex xs12 mt-3 mx-5>
+      <movie-list :token="token"></movie-list>
+    </v-flex>
   </v-layout>
 </template>
 
