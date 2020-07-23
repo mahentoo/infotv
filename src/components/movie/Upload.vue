@@ -15,6 +15,21 @@
         <span class="red--text">{{ errors.name[0] }}</span>
       </v-flex>
 
+      <v-flex>
+        <v-file-input
+          id="movie"
+          name="movie"
+          label="Arquivo"
+          accept="video/mp4"
+          prepend-icon=""
+          v-model="movie"
+          show-size
+        ></v-file-input>
+      </v-flex>
+      <v-flex class="text-xs-center" v-if="errors && errors.movie">
+        <span class="red--text">{{ errors.movie[0] }}</span>
+      </v-flex>
+
       <v-flex class="text-xs-center" mt-5>
         <v-btn type="submit" form="form-movie-upload" color="primary">
           Enviar
@@ -39,6 +54,7 @@
 
     data: () => ({
       name: '',
+      movie: undefined,
       errors: null,
     }),
 
@@ -47,6 +63,7 @@
         let formData = new FormData();
 
         formData.append('name', this.name);
+        formData.append('movie', this.movie);
 
         this.errors = null;
 
