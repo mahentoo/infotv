@@ -17,10 +17,16 @@
                 required
               ></v-text-field>
             </v-flex>
-            <div>
-              <label>Senha</label>
-              <input type="password" name="password" v-model="password">
-            </div>
+            <v-flex>
+              <v-text-field
+                id="password"
+                name="password"
+                label="Senha"
+                type="password"
+                v-model="password"
+                required
+              ></v-text-field>
+            </v-flex>
             <div v-if="error">{{ error }}</div>
             <div>
               <button type="submit">Entrar</button>

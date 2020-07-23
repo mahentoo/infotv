@@ -27,11 +27,16 @@
                 required
               ></v-text-field>
             </v-flex>
-            <div>
-              <label>Senha</label>
-              <input type="password" name="password" v-model="password">
-              <span v-if="errors && errors.password">{{ errors.password[0] }}</span>
-            </div>
+            <v-flex>
+              <v-text-field
+                id="password"
+                name="password"
+                label="Senha"
+                type="password"
+                v-model="password"
+                required
+              ></v-text-field>
+            </v-flex>
             <div>
               <label>Confirmar senha</label>
               <input type="password" name="password_confirmation" v-model="password_confirmation">
