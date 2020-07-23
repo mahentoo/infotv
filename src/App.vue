@@ -52,8 +52,14 @@
 </template>
 
 <script>
+  import { Bus } from '@/main';
+
   export default {
     name: 'App',
+
+    created () {
+      Bus.$on('currentUserUpdated', () => this.reloadCurrentUser());
+    },
 
     data: () => ({
       currentUser: {
@@ -63,6 +69,13 @@
     }),
 
     methods: {
+      reloadCurrentUser () {
+        this.currentUser = {
+          name: localStorage.getItem('user.name'),
+          email: localStorage.getItem('user.email'),
+        };
+      },
+
       logout () {
         window.localStorage.clear();
 
