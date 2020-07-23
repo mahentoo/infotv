@@ -15,5 +15,16 @@
     data: () => ({
       token: localStorage.getItem('user.token'),
     }),
-  }
+
+    watch: {
+      token: {
+        handler: function (token) {
+          if (! token) {
+            this.$router.push('/signin');
+          }
+        },
+        immediate: true,
+      },
+    },
+  };
 </script>
