@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer permanent expand-on-hover app>
-      <v-list v-if="currentUser.email">
+      <v-list v-if="currentUser">
         <v-list-item link>
           <v-list-item-content>
             <v-list-item-title class="title">{{ currentUser.name }}</v-list-item-title>
@@ -70,18 +70,12 @@
     },
 
     data: () => ({
-      currentUser: {
-        name: localStorage.getItem('user.name'),
-        email: localStorage.getItem('user.email'),
-      },
+      currentUser: null,
     }),
 
     methods: {
       reloadCurrentUser () {
-        this.currentUser = {
-          name: localStorage.getItem('user.name'),
-          email: localStorage.getItem('user.email'),
-        };
+        this.currentUser = JSON.parse(localStorage.getItem('user'));
       },
 
       logout () {
