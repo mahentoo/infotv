@@ -19,8 +19,14 @@
       this.list();
     },
 
+    data: () => ({
+      error: '',
+    }),
+
     methods: {
       list () {
+        this.error = '';
+
         axios
           .get('http://front-test.diga.net.br/api/movie', {
             headers: {
@@ -28,6 +34,11 @@
             },
           })
           .then(({ data }) => {
+            if (data.error) {
+              this.error = data.response.message;
+
+              return;
+            }
           })
           .catch((error) => {
             console.log(error);
