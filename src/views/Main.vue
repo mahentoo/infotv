@@ -1,5 +1,7 @@
 <template>
-  <v-container fluid></v-container>
+  <v-container fluid>
+    <movie-upload :token="token"></movie-upload>
+  </v-container>
 </template>
 
 <script>
