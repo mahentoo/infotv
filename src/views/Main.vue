@@ -23,11 +23,11 @@
     name: 'Main',
 
     created () {
-      Bus.$on('currentUserUpdated', () => this.token = localStorage.getItem('user.token'));
+      Bus.$on('currentUserUpdated', () => this.token = localStorage.getItem('token'));
     },
 
     data: () => ({
-      token: localStorage.getItem('user.token'),
+      token: localStorage.getItem('token'),
       showUpload: false,
     }),
 

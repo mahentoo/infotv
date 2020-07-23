@@ -75,7 +75,7 @@
             }
 
             localStorage.setItem('user', JSON.stringify(data.response.user));
-            localStorage.setItem('user.token', data.response.token);
+            localStorage.setItem('token', data.response.token);
 
             Bus.$emit('currentUserUpdated');
 
