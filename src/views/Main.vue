@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-layout row wrap>
     <div class="text-right">
       <v-btn @click="showUpload = ! showUpload" dark rounded v-if="showUpload">
         Cancelar
@@ -8,12 +8,10 @@
         Enviar vídeo
       </v-btn>
     </div>
-    <v-layout row wrap>
-      <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
-        <movie-upload :token="token" v-show="showUpload"></movie-upload>
-      </v-flex>
-    </v-layout>
-  </v-container>
+    <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
+      <movie-upload :token="token" v-show="showUpload"></movie-upload>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
