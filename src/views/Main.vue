@@ -11,6 +11,8 @@
     <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
       <movie-upload :token="token" v-show="showUpload"></movie-upload>
     </v-flex>
+
+    <movie-list :token="token"></movie-list>
   </v-layout>
 </template>
 
