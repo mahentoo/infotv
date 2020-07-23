@@ -79,7 +79,7 @@
 
           Bus.$emit('currentUserUpdated');
 
-          this.$router.push('/');
+          this.$router.push('/main');
         })
         .catch((error) => {
           console.log(error);
