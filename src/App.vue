@@ -70,7 +70,7 @@
     },
 
     data: () => ({
-      currentUser: null,
+      currentUser: JSON.parse(localStorage.getItem('user')),
     }),
 
     methods: {
