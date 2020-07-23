@@ -1,5 +1,9 @@
 <template>
-  <v-container fluid></v-container>
+  <v-layout row wrap>
+    <div :key="movie.id" v-for="movie in movies">
+      {{ movie.name }}<br>
+    </div>
+  </v-layout>
 </template>
 
 <script>
@@ -25,6 +29,7 @@
 
     data: () => ({
       error: '',
+      movies: [],
     }),
 
     methods: {
@@ -44,7 +49,7 @@
               return;
             }
 
-            localStorage.setItem('movies', data.response.movie);
+            this.movies = data.response.movie;
           })
           .catch((error) => {
             console.log(error);
