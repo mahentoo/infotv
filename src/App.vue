@@ -80,8 +80,6 @@
         localStorage.clear();
 
         Bus.$emit('currentUserUpdated');
-
-        this.$router.push('/signin');
       },
     },
   };
