@@ -45,6 +45,8 @@
 </template>
 
 <script>
+  import { Bus } from '@/main';
+
   const axios = require('axios');
 
   export default {
@@ -71,9 +73,11 @@
             return;
           }
 
-          window.localStorage.setItem('token', data.response.token);
           window.localStorage.setItem('user.name', data.response.user.name);
           window.localStorage.setItem('user.email', data.response.user.email);
+          window.localStorage.setItem('user.token', data.response.token);
+
+          Bus.$emit('currentUserUpdated');
 
           this.$router.push('/');
         })
