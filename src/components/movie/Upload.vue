@@ -1,5 +1,13 @@
 <template>
-  <v-container fluid></v-container>
+  <v-form id="form-movie-upload" @submit.prevent="upload()">
+    <v-layout column>
+      <v-flex class="text-xs-center" mt-5>
+        <v-btn type="submit" form="form-movie-upload" color="primary">
+          Enviar
+        </v-btn>
+      </v-flex>
+    </v-layout>
+  </v-form>
 </template>
 
 <script>
