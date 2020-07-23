@@ -77,7 +77,7 @@
       },
 
       logout () {
-        window.localStorage.clear();
+        localStorage.clear();
 
         Bus.$emit('currentUserUpdated');
 

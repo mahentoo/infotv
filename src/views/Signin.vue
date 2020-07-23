@@ -73,9 +73,9 @@
             return;
           }
 
-          window.localStorage.setItem('user.name', data.response.user.name);
-          window.localStorage.setItem('user.email', data.response.user.email);
-          window.localStorage.setItem('user.token', data.response.token);
+          localStorage.setItem('user.name', data.response.user.name);
+          localStorage.setItem('user.email', data.response.user.email);
+          localStorage.setItem('user.token', data.response.token);
 
           Bus.$emit('currentUserUpdated');
 
