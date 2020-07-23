@@ -5,7 +5,7 @@
         <h1>Entrar</h1>
       </v-flex>
       <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
-        <v-form @submit.prevent="signin()">
+        <v-form id="form-signin" @submit.prevent="signin()">
           <v-layout column>
             <v-flex>
               <v-text-field
@@ -28,9 +28,11 @@
               ></v-text-field>
             </v-flex>
             <div v-if="error">{{ error }}</div>
-            <div>
-              <button type="submit">Entrar</button>
-            </div>
+            <v-flex class="text-xs-center" mt-5>
+              <v-btn type="submit" form="form-signin" color="primary">
+                Entrar
+              </v-btn>
+            </v-flex>
           </v-layout>
         </v-form>
       </v-flex>
