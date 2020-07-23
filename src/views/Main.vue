@@ -17,14 +17,8 @@
 </template>
 
 <script>
-  import { Bus } from '@/main';
-
   export default {
     name: 'Main',
-
-    created () {
-      Bus.$on('currentUserUpdated', () => this.token = localStorage.getItem('token'));
-    },
 
     data: () => ({
       token: localStorage.getItem('token'),
