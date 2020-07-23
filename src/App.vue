@@ -44,7 +44,11 @@
     </v-navigation-drawer>
 
     <v-app-bar dark app>
-      <v-toolbar-title>InfoTV - Front-end Developer Test</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" style="cursor: pointer">
+          InfoTV - Front-end Developer Test
+        </router-link>
+      </v-toolbar-title>
     </v-app-bar>
 
     <v-main>
