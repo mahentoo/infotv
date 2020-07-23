@@ -3,6 +3,8 @@
 </template>
 
 <script>
+  import { Bus } from '@/main';
+
   const axios = require('axios');
 
   export default {
@@ -16,6 +18,8 @@
     },
 
     created () {
+      Bus.$on('movieAdded', () => this.list());
+
       this.list();
     },
 
