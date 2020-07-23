@@ -30,6 +30,21 @@
         <span class="red--text">{{ errors.movie[0] }}</span>
       </v-flex>
 
+      <v-flex>
+        <v-file-input
+          id="thumb"
+          name="thumb"
+          label="Imagem thumbnail"
+          accept=".jpg"
+          prepend-icon=""
+          v-model="thumb"
+          show-size
+        ></v-file-input>
+      </v-flex>
+      <v-flex class="text-xs-center" v-if="errors && errors.thumb">
+        <span class="red--text">{{ errors.thumb[0] }}</span>
+      </v-flex>
+
       <v-flex class="text-xs-center" mt-5>
         <v-btn type="submit" form="form-movie-upload" color="primary">
           Enviar
@@ -55,6 +70,7 @@
     data: () => ({
       name: '',
       movie: undefined,
+      thumb: undefined,
       errors: null,
     }),
 
@@ -64,6 +80,7 @@
 
         formData.append('name', this.name);
         formData.append('movie', this.movie);
+        formData.append('thumb', this.thumb);
 
         this.errors = null;
 
