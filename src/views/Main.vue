@@ -1,5 +1,5 @@
 <template>
-  <v-layout row wrap>
+  <v-layout row wrap v-if="token">
     <v-flex class="text-right" xs12 mt-3 mx-5>
       <v-btn @click="showUpload = ! showUpload" dark rounded v-if="showUpload">
         Cancelar
