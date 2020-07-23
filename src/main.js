@@ -3,6 +3,8 @@ import App from './App.vue';
 import router from './router';
 import vuetify from './plugins/vuetify';
 
+Vue.component('MovieList', require('./components/movie/List.vue').default);
+
 Vue.config.productionTip = false;
 
 export const Bus = new Vue();
