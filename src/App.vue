@@ -23,7 +23,12 @@
           <v-list-item-title>Sign In</v-list-item-title>
         </v-list-item>
 
-        <logout/>
+        <v-list-item @click="logout()" link>
+          <v-list-item-icon>
+            <v-icon>mdi-power</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Sign Out</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -36,13 +41,15 @@
 </template>
 
 <script>
-  // @ is an alias to /src
-  import Logout from '@/components/Logout.vue'
-
   export default {
     name: 'App',
-    components: {
-      Logout,
+
+    methods: {
+      logout () {
+        window.localStorage.clear();
+
+        this.$router.push('/signin');
+      },
     },
   };
 </script>
