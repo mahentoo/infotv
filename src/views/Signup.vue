@@ -17,11 +17,16 @@
                 required
               ></v-text-field>
             </v-flex>
-            <div>
-              <label>E-mail</label>
-              <input type="email" name="email" v-model="email">
-              <span v-if="errors && errors.email">{{ errors.email[0] }}</span>
-            </div>
+            <v-flex>
+              <v-text-field
+                id="email"
+                name="email"
+                label="E-mail"
+                type="email"
+                v-model="email"
+                required
+              ></v-text-field>
+            </v-flex>
             <div>
               <label>Senha</label>
               <input type="password" name="password" v-model="password">

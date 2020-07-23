@@ -7,10 +7,16 @@
       <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
         <v-form @submit.prevent="signin()">
           <v-layout column>
-            <div>
-              <label>E-mail</label>
-              <input type="email" name="email" v-model="email">
-            </div>
+            <v-flex>
+              <v-text-field
+                id="email"
+                name="email"
+                label="E-mail"
+                type="email"
+                v-model="email"
+                required
+              ></v-text-field>
+            </v-flex>
             <div>
               <label>Senha</label>
               <input type="password" name="password" v-model="password">
