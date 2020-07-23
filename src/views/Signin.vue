@@ -17,6 +17,7 @@
                 required
               ></v-text-field>
             </v-flex>
+
             <v-flex>
               <v-text-field
                 id="password"
@@ -27,7 +28,10 @@
                 required
               ></v-text-field>
             </v-flex>
-            <div v-if="error">{{ error }}</div>
+            <v-flex class="text-xs-center" v-if="error">
+              <span class="red--text">{{ error }}</span>
+            </v-flex>
+
             <v-flex class="text-xs-center" mt-5>
               <v-btn type="submit" form="form-signin" color="primary">
                 Entrar

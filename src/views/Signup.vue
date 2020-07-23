@@ -17,6 +17,10 @@
                 required
               ></v-text-field>
             </v-flex>
+            <v-flex class="text-xs-center" v-if="errors && errors.name">
+              <span class="red--text">{{ errors.name[0] }}</span>
+            </v-flex>
+
             <v-flex>
               <v-text-field
                 id="email"
@@ -27,6 +31,10 @@
                 required
               ></v-text-field>
             </v-flex>
+            <v-flex class="text-xs-center" v-if="errors && errors.email">
+              <span class="red--text">{{ errors.email[0] }}</span>
+            </v-flex>
+
             <v-flex>
               <v-text-field
                 id="password"
@@ -37,6 +45,10 @@
                 required
               ></v-text-field>
             </v-flex>
+            <v-flex class="text-xs-center" v-if="errors && errors.password">
+              <span class="red--text">{{ errors.password[0] }}</span>
+            </v-flex>
+
             <v-flex>
               <v-text-field
                 id="password_confirmation"
@@ -47,6 +59,7 @@
                 required
               ></v-text-field>
             </v-flex>
+
             <v-flex class="text-xs-center" mt-5>
               <v-btn type="submit" form="form-signup" color="primary">
                 Cadastrar
