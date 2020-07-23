@@ -13,11 +13,11 @@
       <v-divider></v-divider>
 
       <v-list nav dense>
-        <v-list-item to="/" link>
+        <v-list-item to="/main" link>
           <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
+            <v-icon>mdi-video</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Home</v-list-item-title>
+          <v-list-item-title>Vídeos</v-list-item-title>
         </v-list-item>
 
         <v-list-item to="/signup" link>
