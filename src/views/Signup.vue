@@ -1,5 +1,5 @@
 <template>
-  <div class="register">
+  <v-container fluid>
     <form @submit.prevent="signup()">
       <div>
         <label>Nome</label>
@@ -24,7 +24,7 @@
         <button type="submit">Registrar</button>
       </div>
     </form>
-  </div>
+  </v-container>
 </template>
 
 <script>
