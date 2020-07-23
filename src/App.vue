@@ -43,6 +43,10 @@
       </v-list>
     </v-navigation-drawer>
 
+    <v-app-bar dark app>
+      <v-toolbar-title>InfoTV - Front-end Developer Test</v-toolbar-title>
+    </v-app-bar>
+
     <v-main>
       <v-container class="fill-height" fluid>
         <router-view/>
