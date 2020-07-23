@@ -69,6 +69,8 @@
 </template>
 
 <script>
+  import { Bus } from '@/main';
+
   const axios = require('axios');
 
   export default {
@@ -112,6 +114,9 @@
 
               return;
             }
+
+            Bus.$emit('movieAdded');
+            this.$emit('close');
           })
           .catch((error) => {
             console.log(error);
