@@ -32,11 +32,11 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-content>
+    <v-main>
       <v-container class="fill-height" fluid>
         <router-view/>
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
