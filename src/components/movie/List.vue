@@ -39,6 +39,8 @@
 
               return;
             }
+
+            localStorage.setItem('movies', data.response.movie);
           })
           .catch((error) => {
             console.log(error);
