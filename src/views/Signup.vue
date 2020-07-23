@@ -4,30 +4,32 @@
       <v-flex class="text-center" xs12 mt-5>
         <h1>Cadastrar</h1>
       </v-flex>
-      <form @submit.prevent="signup()">
-        <div>
-          <label>Nome</label>
-          <input type="text" name="name" v-model="name">
-          <span v-if="errors && errors.name">{{ errors.name[0] }}</span>
-        </div>
-        <div>
-          <label>E-mail</label>
-          <input type="email" name="email" v-model="email">
-          <span v-if="errors && errors.email">{{ errors.email[0] }}</span>
-        </div>
-        <div>
-          <label>Senha</label>
-          <input type="password" name="password" v-model="password">
-          <span v-if="errors && errors.password">{{ errors.password[0] }}</span>
-        </div>
-        <div>
-          <label>Confirmar senha</label>
-          <input type="password" name="password_confirmation" v-model="password_confirmation">
-        </div>
-        <div>
-          <button type="submit">Registrar</button>
-        </div>
-      </form>
+      <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
+        <form @submit.prevent="signup()">
+          <div>
+            <label>Nome</label>
+            <input type="text" name="name" v-model="name">
+            <span v-if="errors && errors.name">{{ errors.name[0] }}</span>
+          </div>
+          <div>
+            <label>E-mail</label>
+            <input type="email" name="email" v-model="email">
+            <span v-if="errors && errors.email">{{ errors.email[0] }}</span>
+          </div>
+          <div>
+            <label>Senha</label>
+            <input type="password" name="password" v-model="password">
+            <span v-if="errors && errors.password">{{ errors.password[0] }}</span>
+          </div>
+          <div>
+            <label>Confirmar senha</label>
+            <input type="password" name="password_confirmation" v-model="password_confirmation">
+          </div>
+          <div>
+            <button type="submit">Registrar</button>
+          </div>
+        </form>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>

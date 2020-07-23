@@ -4,20 +4,22 @@
       <v-flex class="text-center" xs12 mt-5>
         <h1>Entrar</h1>
       </v-flex>
-      <form @submit.prevent="signin()">
-        <div>
-          <label>E-mail</label>
-          <input type="email" name="email" v-model="email">
-        </div>
-        <div>
-          <label>Senha</label>
-          <input type="password" name="password" v-model="password">
-        </div>
-        <div v-if="error">{{ error }}</div>
-        <div>
-          <button type="submit">Entrar</button>
-        </div>
-      </form>
+      <v-flex xs12 sm6 xl4 offset-sm3 offset-xl4 mt-3>
+        <form @submit.prevent="signin()">
+          <div>
+            <label>E-mail</label>
+            <input type="email" name="email" v-model="email">
+          </div>
+          <div>
+            <label>Senha</label>
+            <input type="password" name="password" v-model="password">
+          </div>
+          <div v-if="error">{{ error }}</div>
+          <div>
+            <button type="submit">Entrar</button>
+          </div>
+        </form>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
