@@ -32,7 +32,7 @@
         const token = localStorage.getItem('token');
 
         axios
-          .delete('http://front-test.diga.net.br/api/movie/5' + this.movie.id, {
+          .delete('http://front-test.diga.net.br/api/movie/' + this.movie.id, {
             headers: {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/x-www-form-urlencoded',
