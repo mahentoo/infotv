@@ -8,6 +8,37 @@ export default new Vuex.Store({
     movies: [],
   },
 
+  getters: {
+    orderedMovies: (state) => {
+      return state.movies.sort((a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+
+        let comparison = 0;
+
+        if (nameA > nameB) {
+          comparison = 1;
+        }
+
+        if (nameA < nameB) {
+          comparison = -1;
+        }
+
+        if (nameA === nameB) {
+          if (a.length > b.length) {
+            comparison = 1;
+          }
+
+          if (a.length < b.length) {
+            comparison = -1;
+          }
+        }
+
+        return comparison;
+      });
+    },
+  },
+
   mutations: {
     setMovies (state, movies) {
       state.movies = movies;

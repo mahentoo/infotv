@@ -22,7 +22,7 @@
 
     computed: {
       movies () {
-        return this.$store.state.movies;
+        return this.$store.getters.orderedMovies;
       }
     },
 
