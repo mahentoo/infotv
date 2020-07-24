@@ -117,9 +117,11 @@
         this.errors = null;
 
         let url = 'http://front-test.diga.net.br/api/movie/upload';
+        let event = 'movieAdded';
 
         if (this.movie.id) {
           url = 'http://front-test.diga.net.br/api/movie/update/' + this.movie.id;
+          event = 'movieUpdated';
         }
 
         axios
@@ -135,7 +137,7 @@
               return;
             }
 
-            Bus.$emit('movieAdded', data.response.movie);
+            Bus.$emit(event, data.response.movie, this.movie);
           })
           .catch((error) => {
             console.log(error);
