@@ -9,18 +9,12 @@
 </template>
 
 <script>
-  import { Bus } from '@/main';
-
   const axios = require('axios');
 
   export default {
     name: 'List',
 
     created () {
-      Bus.$on('movieAdded', (movie) => this.movies.push(movie));
-      Bus.$on('movieUpdated', (movie, oldMovie) => this.movies.splice(this.movies.indexOf(oldMovie), 1, movie));
-      Bus.$on('movieRemoved', (movie) => this.movies.splice(this.movies.indexOf(movie), 1));
-
       this.list();
     },
 
