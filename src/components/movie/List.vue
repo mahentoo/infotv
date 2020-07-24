@@ -1,10 +1,10 @@
 <template>
   <v-sheet>
-    <v-row align="start" justify="start">
-      <v-col :key="movie.id" v-for="movie in movies">
+    <v-layout wrap justify-space-around>
+      <v-flex :key="movie.id" v-for="movie in movies">
         <movie-card :movie="movie"></movie-card>
-      </v-col>
-    </v-row>
+      </v-flex>
+    </v-layout>
   </v-sheet>
 </template>
 
