@@ -1,11 +1,9 @@
 <template>
-  <v-sheet>
-    <v-layout wrap>
-      <v-card :key="movie.id" v-for="movie in movies">
-        <movie-card :movie="movie"></movie-card>
-      </v-card>
-    </v-layout>
-  </v-sheet>
+  <v-layout wrap>
+    <v-sheet :key="movie.id" v-for="movie in movies">
+      <movie-card :movie="movie"></movie-card>
+    </v-sheet>
+  </v-layout>
 </template>
 
 <script>
