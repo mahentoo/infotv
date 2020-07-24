@@ -1,9 +1,9 @@
 <template>
   <v-sheet>
-    <v-layout wrap justify-space-around>
-      <v-flex :key="movie.id" v-for="movie in movies">
+    <v-layout wrap>
+      <v-card :key="movie.id" v-for="movie in movies">
         <movie-card :movie="movie"></movie-card>
-      </v-flex>
+      </v-card>
     </v-layout>
   </v-sheet>
 </template>
