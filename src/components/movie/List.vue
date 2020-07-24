@@ -1,9 +1,11 @@
 <template>
-  <v-layout row wrap>
-    <div :key="movie.id" v-for="movie in movies">
-      {{ movie.name }}<br>
-    </div>
-  </v-layout>
+  <v-sheet>
+    <v-row align="start" justify="start">
+      <v-col :key="movie.id" v-for="movie in movies">
+        <movie-card :movie="movie"></movie-card>
+      </v-col>
+    </v-row>
+  </v-sheet>
 </template>
 
 <script>
