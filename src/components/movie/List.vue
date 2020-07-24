@@ -26,8 +26,13 @@
 
     data: () => ({
       error: '',
-      movies: [],
     }),
+
+    computed: {
+      movies () {
+        return this.$store.state.movies;
+      }
+    },
 
     methods: {
       list () {
@@ -48,7 +53,7 @@
               return;
             }
 
-            this.movies = data.response.movie;
+            this.$store.commit('setMovies', data.response.movie);
           })
           .catch((error) => {
             console.log(error);
