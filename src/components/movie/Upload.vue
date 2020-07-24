@@ -143,8 +143,6 @@
               return;
             }
 
-            this.toggleDialog();
-
             let movie = data.response.movie;
 
             if (this.movie.id) {
@@ -155,6 +153,8 @@
               movie,
               oldMovie: this.movie,
             });
+
+            this.toggleDialog();
           })
           .catch((error) => {
             console.log(error);
