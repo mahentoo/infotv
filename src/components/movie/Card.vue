@@ -17,8 +17,6 @@
 <script>
   import { Bus } from '@/main';
 
-  const axios = require('axios');
-
   export default {
     name: 'Card',
 
@@ -30,30 +28,6 @@
     },
 
     methods: {
-      remove () {
-        const token = localStorage.getItem('token');
-
-        axios
-          .delete('http://front-test.diga.net.br/api/movie/' + this.movie.id, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-          })
-          .then(({ data }) => {
-            if (data.error) {
-              this.error = data.response.message;
-
-              return;
-            }
-
-            Bus.$emit('movieRemoved', this.movie);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-
       confirmDelete () {
         Bus.$emit('confirmDelete', this.movie);
       },
