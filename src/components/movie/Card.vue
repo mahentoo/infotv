@@ -7,6 +7,9 @@
     </v-container>
 
     <v-card-actions>
+      <v-btn @click="showEdit()" icon>
+        <v-icon>mdi-pencil</v-icon>
+      </v-btn>
       <v-btn @click="confirmDelete()" icon>
         <v-icon>mdi-delete</v-icon>
       </v-btn>
@@ -28,6 +31,10 @@
     },
 
     methods: {
+      showEdit () {
+        Bus.$emit('showEdit', this.movie);
+      },
+
       confirmDelete () {
         Bus.$emit('confirmDelete', this.movie);
       },
