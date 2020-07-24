@@ -73,7 +73,7 @@
 
             this.dialogDelete = false;
 
-            Bus.$emit('movieRemoved', this.movieToDelete);
+            this.$store.commit('remove', this.movieToDelete);
           })
           .catch((error) => {
             console.log(error);
