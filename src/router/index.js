@@ -11,11 +11,6 @@ Vue.use(VueRouter)
     component: Main
   },
   {
-    path: '/movie/:id',
-    name: 'Watch',
-    component: () => import('../views/Watch.vue'),
-  },
-  {
     path: '/signin',
     name: 'Signin',
     component: () => import('../views/Signin.vue'),
