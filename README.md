@@ -7,6 +7,8 @@ Para o player de vídeo utilizei a dependencia `vue-video-player`.
 
 E por fim, para o armazenamento local dos vídeos, utilizei do Vuex.
 
+Eu não estava habituado a trabalhar com SPA, então todo o projeto eu fiz uso de recursos que não tinha tanto domínio, e ainda assim estou bem satisfeito com o quando me desenvolvi realizando essa tarefa.
+
 ## Project setup
 ```
 npm install
