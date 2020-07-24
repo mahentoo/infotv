@@ -18,6 +18,7 @@
 
     created () {
       Bus.$on('movieAdded', (movie) => this.movies.push(movie));
+      Bus.$on('movieRemoved', (movie) => this.movies.splice(this.movies.indexOf(movie), 1));
 
       this.list();
     },
