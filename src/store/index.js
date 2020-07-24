@@ -12,6 +12,10 @@ export default new Vuex.Store({
     add (state, movie) {
       state.movies.push(movie);
     },
+
+    update (state, payload) {
+      state.movies.splice(state.movies.indexOf(payload.oldMovie), 1, payload.movie);
+    },
   },
   actions: {
   },
