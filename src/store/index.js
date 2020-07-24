@@ -13,8 +13,8 @@ export default new Vuex.Store({
       state.movies = movies;
     },
 
-    add (state, movie) {
-      state.movies.push(movie);
+    add (state, payload) {
+      state.movies.push(payload.movie);
     },
 
     update (state, payload) {
