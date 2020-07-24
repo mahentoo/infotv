@@ -8,6 +8,12 @@
       <movie-list></movie-list>
     </v-flex>
 
+    <v-flex xs12 mt-3 mx-5>
+      <v-sheet v-if="playing">
+        <movie-watch :movie="movieToPlay"></movie-watch>
+      </v-sheet>
+    </v-flex>
+
     <v-dialog v-model="dialogDelete" max-width="300px">
       <v-card>
         <v-card-title>Remover</v-card-title>
@@ -32,13 +38,16 @@
     name: 'Main',
 
     created () {
+      Bus.$on('playing', (movie) => this.toPlay(movie));
       Bus.$on('confirmDelete', (movie) => this.confirmDelete(movie));
     },
 
     data: () => ({
       token: localStorage.getItem('token'),
       showUpload: false,
+      playing: false,
       dialogDelete: false,
+      movieToPlay: {},
       movieToDelete: {},
     }),
 
@@ -78,6 +87,11 @@
           .catch((error) => {
             console.log(error);
           });
+      },
+
+      toPlay (movie = {}) {
+        this.movieToPlay = movie;
+        this.playing = true;
       },
 
       confirmDelete (movie = {}) {
