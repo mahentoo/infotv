@@ -80,7 +80,7 @@
         </v-row>
       </v-card-text>
 
-      <v-card-actions>
+      <v-card-actions class="px-6 pb-6">
         <v-spacer></v-spacer>
         <v-btn @click="toggleDialog()" rounded>Cancelar</v-btn>
         <v-btn color="primary" @click="save(movie)" rounded>Enviar</v-btn>
