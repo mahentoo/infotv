@@ -1,7 +1,10 @@
 <template>
-  <v-card>
-    <video-player class="video-player-box" ref="videoPlayer" :options="playerOptions"></video-player>
-  </v-card>
+  <video-player
+    class="video-player-box mx-auto"
+    ref="videoPlayer"
+    :options="playerOptions"
+    v-if="movie"
+  ></video-player>
 </template>
 
 <script>
