@@ -18,9 +18,10 @@ export default new Vuex.Store({
     },
 
     remove (state, movie) {
-      state.movies.splice(stat.movies.indexOf(movie), 1);
+      state.movies.splice(state.movies.indexOf(movie), 1);
     },
   },
+
   actions: {
   },
   modules: {
