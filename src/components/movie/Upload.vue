@@ -123,11 +123,11 @@
         this.errors = null;
 
         let url = 'http://front-test.diga.net.br/api/movie/upload';
-        let event = 'movieAdded';
+        let mutation = 'add';
 
         if (this.movie.id) {
           url = 'http://front-test.diga.net.br/api/movie/update/' + this.movie.id;
-          event = 'movieUpdated';
+          mutation = 'update';
         }
 
         axios
@@ -145,7 +145,10 @@
 
             this.toggleDialog();
 
-            Bus.$emit(event, data.response.movie, this.movie);
+            this.$store.commit(mutation, {
+              movie: data.response.movie,
+              oldMovie: this.movie,
+            });
           })
           .catch((error) => {
             console.log(error);
