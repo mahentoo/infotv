@@ -3,7 +3,9 @@
     <v-card-title>{{ movie.name }}</v-card-title>
 
     <v-container>
-      <v-img height="160" width="260" :src="movie.thumb_path"></v-img>
+      <router-link :to="'/movie/' + movie.id">
+        <v-img height="160" width="260" :src="movie.thumb_path"></v-img>
+      </router-link>
     </v-container>
 
     <v-card-actions>
