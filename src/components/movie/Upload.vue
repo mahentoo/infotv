@@ -145,8 +145,14 @@
 
             this.toggleDialog();
 
+            let movie = data.response.movie;
+
+            if (this.movie.id) {
+              movie = data.response.response.movie;
+            }
+
             this.$store.commit(mutation, {
-              movie: data.response.movie,
+              movie,
               oldMovie: this.movie,
             });
           })
