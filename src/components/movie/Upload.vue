@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialogEdit" max-width="600px">
+  <v-dialog v-model="showDialog" max-width="600px">
     <template v-slot:activator="{ on }">
       <v-btn color="primary" v-on="on" dark rounded>
         Enviar vídeo
@@ -100,7 +100,7 @@
         name: '',
       },
       errors: null,
-      dialogEdit: false,
+      showDialog: false,
     }),
 
     methods: {
@@ -144,7 +144,7 @@
 
       showEditDialog (movie = { name: '' }) {
         this.movie = movie;
-        this.dialogEdit = ! this.dialogEdit;
+        this.showDialog = ! this.showDialog;
       },
     },
   };
