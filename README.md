@@ -1,4 +1,11 @@
-# infotv
+# InfoTV - Front-end Developer Test
+Optei por usar o Vue-CLI para organizar o projeto, posteriormente fiz a opção de usar Vue Router e Vuetify, o que foi bastante interessante, pois até então eu não conhecia.
+
+Para consumir a api fiz uso da biblioteca axios por já ter utilizado a biblioteca anteriormente.
+
+Para o player de vídeo utilizei a dependencia `vue-video-player`. 
+
+E por fim, para o armazenamento local dos vídeos, utilizei do Vuex.
 
 ## Project setup
 ```
