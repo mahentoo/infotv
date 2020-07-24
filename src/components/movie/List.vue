@@ -16,13 +16,6 @@
   export default {
     name: 'List',
 
-    props: {
-      token: {
-        type: String,
-        required: true,
-      },
-    },
-
     created () {
       Bus.$on('movieAdded', () => this.list());
 
@@ -36,12 +29,14 @@
 
     methods: {
       list () {
+        const token = localStorage.getItem('token');
+
         this.error = '';
 
         axios
           .get('http://front-test.diga.net.br/api/movie', {
             headers: {
-              Authorization: `Bearer ${this.token}`,
+              Authorization: `Bearer ${token}`,
             },
           })
           .then(({ data }) => {

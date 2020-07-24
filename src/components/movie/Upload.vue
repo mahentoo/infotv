@@ -76,13 +76,6 @@
   export default {
     name: 'Upload',
 
-    props: {
-      token: {
-        type: String,
-        required: true,
-      },
-    },
-
     data: () => ({
       name: '',
       length: '',
@@ -93,6 +86,8 @@
 
     methods: {
       upload () {
+        const token = localStorage.getItem('token');
+
         let formData = new FormData();
 
         formData.append('name', this.name);
@@ -105,7 +100,7 @@
         axios
           .post('http://front-test.diga.net.br/api/movie/upload', formData, {
             headers: {
-              Authorization: `Bearer ${this.token}`,
+              Authorization: `Bearer ${token}`,
             },
           })
           .then(({ data }) => {
