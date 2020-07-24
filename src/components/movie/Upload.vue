@@ -80,7 +80,7 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn @click="showEditDialog()" rounded>Cancelar</v-btn>
+        <v-btn @click="toggleDialog()" rounded>Cancelar</v-btn>
         <v-btn color="primary" @click="save(movie)" rounded>Enviar</v-btn>
       </v-card-actions>
     </v-card>
@@ -137,6 +137,8 @@
               return;
             }
 
+            this.toggleDialog();
+
             Bus.$emit(event, data.response.movie, this.movie);
           })
           .catch((error) => {
@@ -144,7 +146,7 @@
           });
       },
 
-      showEditDialog (movie = { name: '' }) {
+      toggleDialog (movie = { name: '' }) {
         this.movie = movie;
         this.showDialog = ! this.showDialog;
       },
