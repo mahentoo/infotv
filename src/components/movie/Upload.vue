@@ -1,71 +1,86 @@
 <template>
-  <v-form id="form-movie-upload" @submit.prevent="upload()">
-    <v-layout column>
-      <v-flex>
-        <v-text-field
-          id="name"
-          name="name"
-          label="Nome"
-          type="text"
-          v-model="name"
-          required
-        ></v-text-field>
-      </v-flex>
-      <v-flex class="text-xs-center" v-if="errors && errors.name">
-        <span class="red--text">{{ errors.name[0] }}</span>
-      </v-flex>
+  <v-dialog v-model="dialogEdit" max-width="600px">
+    <template v-slot:activator="{ on }">
+      <v-btn color="primary" v-on="on" dark rounded>
+        Enviar vídeo
+      </v-btn>
+    </template>
 
-      <v-flex>
-        <v-file-input
-          id="movie"
-          name="movie"
-          label="Arquivo"
-          accept="video/mp4"
-          prepend-icon=""
-          v-model="movie"
-          show-size
-        ></v-file-input>
-      </v-flex>
-      <v-flex class="text-xs-center" v-if="errors && errors.movie">
-        <span class="red--text">{{ errors.movie[0] }}</span>
-      </v-flex>
+    <v-card>
+      <v-card-title>Novo vídeo</v-card-title>
 
-      <v-flex>
-        <v-file-input
-          id="thumb"
-          name="thumb"
-          label="Imagem thumbnail"
-          accept=".jpg"
-          prepend-icon=""
-          v-model="thumb"
-          show-size
-        ></v-file-input>
-      </v-flex>
-      <v-flex class="text-xs-center" v-if="errors && errors.thumb">
-        <span class="red--text">{{ errors.thumb[0] }}</span>
-      </v-flex>
+      <v-card-text>
+        <v-row>
+          <v-col>
+            <v-layout column>
+              <v-flex>
+                <v-text-field
+                id="name"
+                name="name"
+                label="Nome"
+                type="text"
+                v-model="movie.name"
+                required
+                ></v-text-field>
+              </v-flex>
+              <v-flex class="text-xs-center" v-if="errors && errors.name">
+                <span class="red--text">{{ errors.name[0] }}</span>
+              </v-flex>
 
-      <v-flex>
-        <v-text-field
-          id="length"
-          name="length"
-          label="Duração"
-          type="number"
-          v-model="length"
-          required
-        ></v-text-field>
-      </v-flex>
-      <v-flex class="text-xs-center" v-if="errors && errors.length">
-        <span class="red--text">{{ errors.length[0] }}</span>
-      </v-flex>
+              <v-flex>
+                <v-file-input
+                id="movie"
+                name="movie"
+                label="Arquivo"
+                accept="video/mp4"
+                prepend-icon=""
+                v-model="movie.file"
+                show-size
+                ></v-file-input>
+              </v-flex>
+              <v-flex class="text-xs-center" v-if="errors && errors.movie">
+                <span class="red--text">{{ errors.movie[0] }}</span>
+              </v-flex>
 
-      <v-flex class="text-xs-center" mt-5>
-        <v-btn type="submit" form="form-movie-upload" color="primary">
-          Enviar
-        </v-btn>
-      </v-flex>
-    </v-layout>
-  </v-form>
+              <v-flex>
+                <v-file-input
+                id="thumb"
+                name="thumb"
+                label="Imagem thumbnail"
+                accept=".jpg"
+                prepend-icon=""
+                v-model="movie.thumb"
+                show-size
+                ></v-file-input>
+              </v-flex>
+              <v-flex class="text-xs-center" v-if="errors && errors.thumb">
+                <span class="red--text">{{ errors.thumb[0] }}</span>
+              </v-flex>
+
+              <v-flex>
+                <v-text-field
+                id="length"
+                name="length"
+                label="Duração"
+                type="number"
+                v-model="movie.length"
+                required
+                ></v-text-field>
+              </v-flex>
+              <v-flex class="text-xs-center" v-if="errors && errors.length">
+                <span class="red--text">{{ errors.length[0] }}</span>
+              </v-flex>
+            </v-layout>
+          </v-col>
+        </v-row>
+      </v-card-text>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="primary" @click="upload(movie)" rounded>Enviar</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
@@ -77,10 +92,9 @@
     name: 'Upload',
 
     data: () => ({
-      name: '',
-      length: '',
-      movie: undefined,
-      thumb: undefined,
+      movie: {
+        name: '',
+      },
       errors: null,
     }),
 
@@ -90,10 +104,10 @@
 
         let formData = new FormData();
 
-        formData.append('name', this.name);
-        formData.append('movie', this.movie);
-        formData.append('thumb', this.thumb);
-        formData.append('length', this.length);
+        formData.append('name', this.movie.name);
+        formData.append('movie', this.movie.file);
+        formData.append('thumb', this.movie.thumb);
+        formData.append('length', this.movie.length);
 
         this.errors = null;
 
@@ -109,8 +123,6 @@
 
               return;
             }
-
-            this.$emit('added');
 
             Bus.$emit('movieAdded', data.response.movie);
           })
