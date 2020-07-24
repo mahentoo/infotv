@@ -17,7 +17,7 @@
     name: 'List',
 
     created () {
-      Bus.$on('movieAdded', () => this.list());
+      Bus.$on('movieAdded', (movie) => this.movies.push(movie));
 
       this.list();
     },
