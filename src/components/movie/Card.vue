@@ -7,7 +7,7 @@
     </v-container>
 
     <v-card-actions>
-      <v-btn @click="remove()" icon>
+      <v-btn @click="confirmDelete()" icon>
         <v-icon>mdi-delete</v-icon>
       </v-btn>
     </v-card-actions>
@@ -52,6 +52,10 @@
           .catch((error) => {
             console.log(error);
           });
+      },
+
+      confirmDelete () {
+        Bus.$emit('confirmDelete', this.movie);
       },
     },
   };
