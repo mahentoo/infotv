@@ -7,7 +7,10 @@
     </template>
 
     <v-card>
-      <v-card-title>Novo vídeo</v-card-title>
+      <v-card-title>
+        <span v-if="movie.id">Editar <bold>{{ movie.name }}</bold></span>
+        <span v-else>Novo vídeo</span>
+      </v-card-title>
 
       <v-card-text>
         <v-row>
@@ -77,7 +80,8 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" @click="upload(movie)" rounded>Enviar</v-btn>
+        <v-btn @click="showEditDialog()" rounded>Cancelar</v-btn>
+        <v-btn color="primary" @click="save(movie)" rounded>Enviar</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -96,10 +100,11 @@
         name: '',
       },
       errors: null,
+      dialogEdit: false,
     }),
 
     methods: {
-      upload () {
+      save () {
         const token = localStorage.getItem('token');
 
         let formData = new FormData();
@@ -111,8 +116,14 @@
 
         this.errors = null;
 
+        let url = 'http://front-test.diga.net.br/api/movie/upload';
+
+        if (this.movie.id) {
+          url = 'http://front-test.diga.net.br/api/movie/update/' + this.movie.id;
+        }
+
         axios
-          .post('http://front-test.diga.net.br/api/movie/upload', formData, {
+          .post(url, formData, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -129,6 +140,11 @@
           .catch((error) => {
             console.log(error);
           });
+      },
+
+      showEditDialog (movie = { name: '' }) {
+        this.movie = movie;
+        this.dialogEdit = ! this.dialogEdit;
       },
     },
   };
