@@ -95,6 +95,10 @@
   export default {
     name: 'Upload',
 
+    created () {
+      Bus.$on('showEdit', (movie) => this.toggleDialog(movie));
+    },
+
     data: () => ({
       movie: {
         name: '',
