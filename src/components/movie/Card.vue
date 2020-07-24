@@ -1,5 +1,5 @@
 <template>
-  <v-card class="d-inline-block mx-auto">
+  <v-card class="d-inline-block mr-4 mb-4">
     <v-card-title>{{ movie.name }}</v-card-title>
 
     <v-container>
