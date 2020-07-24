@@ -14,27 +14,23 @@ export default new Vuex.Store({
         const nameA = a.name.toUpperCase();
         const nameB = b.name.toUpperCase();
 
-        let comparison = 0;
-
         if (nameA > nameB) {
-          comparison = 1;
+          return 1;
         }
 
         if (nameA < nameB) {
-          comparison = -1;
+          return -1;
         }
 
-        if (nameA === nameB) {
-          if (a.length > b.length) {
-            comparison = 1;
-          }
-
-          if (a.length < b.length) {
-            comparison = -1;
-          }
+        if (a.length > b.length) {
+          return 1;
         }
 
-        return comparison;
+        if (a.length < b.length) {
+          return -1;
+        }
+
+        return 0;
       });
     },
   },
