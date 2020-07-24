@@ -9,6 +9,9 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    add (state, movie) {
+      state.movies.push(movie);
+    },
   },
   actions: {
   },
