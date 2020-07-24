@@ -8,7 +8,9 @@
 
     <v-card>
       <v-card-title>
-        <span v-if="movie.id">Editar <bold>{{ movie.name }}</bold></span>
+        <span v-if="movie.id">
+          Editar <span class="font-weight-bold">{{ movie.name }}</span>
+        </span>
         <span v-else>Novo vídeo</span>
       </v-card-title>
 
