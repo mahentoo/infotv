@@ -7,6 +7,7 @@
     </v-container>
 
     <v-card-actions>
+      <v-spacer></v-spacer>
       <v-btn @click="showEdit()" icon>
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
