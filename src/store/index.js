@@ -16,6 +16,10 @@ export default new Vuex.Store({
     update (state, payload) {
       state.movies.splice(state.movies.indexOf(payload.oldMovie), 1, payload.movie);
     },
+
+    remove (state, movie) {
+      state.movies.splice(stat.movies.indexOf(movie), 1);
+    },
   },
   actions: {
   },
