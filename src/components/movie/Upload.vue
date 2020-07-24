@@ -112,7 +112,7 @@
 
             this.$emit('added');
 
-            Bus.$emit('movieAdded');
+            Bus.$emit('movieAdded', data.response.movie);
           })
           .catch((error) => {
             console.log(error);
