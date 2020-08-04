@@ -20,12 +20,12 @@
             <v-layout column>
               <v-flex>
                 <v-text-field
-                id="name"
-                name="name"
-                label="Nome"
-                type="text"
-                v-model="movie.name"
-                required
+                  id="name"
+                  name="name"
+                  label="Nome"
+                  type="text"
+                  v-model="movie.name"
+                  required
                 ></v-text-field>
               </v-flex>
               <v-flex class="text-xs-center" v-if="errors && errors.name">
@@ -34,13 +34,13 @@
 
               <v-flex>
                 <v-file-input
-                id="movie"
-                name="movie"
-                label="Arquivo"
-                accept="video/mp4"
-                prepend-icon=""
-                v-model="movie.file"
-                show-size
+                  id="movie"
+                  name="movie"
+                  label="Arquivo"
+                  accept="video/mp4"
+                  prepend-icon=""
+                  v-model="movie.file"
+                  show-size
                 ></v-file-input>
               </v-flex>
               <v-flex class="text-xs-center" v-if="errors && errors.movie">
@@ -49,13 +49,13 @@
 
               <v-flex>
                 <v-file-input
-                id="thumb"
-                name="thumb"
-                label="Imagem thumbnail"
-                accept=".jpg"
-                prepend-icon=""
-                v-model="movie.thumb"
-                show-size
+                  id="thumb"
+                  name="thumb"
+                  label="Imagem thumbnail"
+                  accept=".jpg"
+                  prepend-icon=""
+                  v-model="movie.thumb"
+                  show-size
                 ></v-file-input>
               </v-flex>
               <v-flex class="text-xs-center" v-if="errors && errors.thumb">
@@ -64,12 +64,12 @@
 
               <v-flex>
                 <v-text-field
-                id="length"
-                name="length"
-                label="Duração"
-                type="number"
-                v-model="movie.length"
-                required
+                  id="length"
+                  name="length"
+                  label="Duração"
+                  type="number"
+                  v-model="movie.length"
+                  required
                 ></v-text-field>
               </v-flex>
               <v-flex class="text-xs-center" v-if="errors && errors.length">
