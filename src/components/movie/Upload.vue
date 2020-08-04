@@ -25,7 +25,6 @@
                   label="Nome"
                   type="text"
                   v-model="movie.name"
-                  required
                 ></v-text-field>
               </v-flex>
               <v-flex class="text-xs-center" v-if="errors && errors.name">
