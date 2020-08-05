@@ -45,31 +45,8 @@
               <v-flex class="text-xs-center" v-if="errors && errors.movie">
                 <span class="red--text">{{ errors.movie[0] }}</span>
               </v-flex>
-
-              <v-flex>
-                <v-file-input
-                  id="thumb"
-                  name="thumb"
-                  label="Imagem thumbnail"
-                  accept=".jpg"
-                  prepend-icon=""
-                  v-model="movie.thumb"
-                  show-size
-                ></v-file-input>
-              </v-flex>
               <v-flex class="text-xs-center" v-if="errors && errors.thumb">
                 <span class="red--text">{{ errors.thumb[0] }}</span>
-              </v-flex>
-
-              <v-flex>
-                <v-text-field
-                  id="length"
-                  name="length"
-                  label="Duração"
-                  type="number"
-                  v-model="movie.length"
-                  required
-                ></v-text-field>
               </v-flex>
               <v-flex class="text-xs-center" v-if="errors && errors.length">
                 <span class="red--text">{{ errors.length[0] }}</span>
