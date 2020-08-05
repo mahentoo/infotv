@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { Bus } from '@/main';
+import Bus from '@/bus';
 
 const axios = require('axios');
 
