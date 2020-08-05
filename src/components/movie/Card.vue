@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { Bus } from '@/main';
+import Bus from '@/bus';
 
 export default {
   name: 'Card',
