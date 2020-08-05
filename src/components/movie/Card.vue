@@ -19,30 +19,30 @@
 </template>
 
 <script>
-  import { Bus } from '@/main';
+import { Bus } from '@/main';
 
-  export default {
-    name: 'Card',
+export default {
+  name: 'Card',
 
-    props: {
-      movie: {
-        type: Object,
-        required: true,
-      },
+  props: {
+    movie: {
+      type: Object,
+      required: true,
+    },
+  },
+
+  methods: {
+    playing() {
+      Bus.$emit('playing', this.movie);
     },
 
-    methods: {
-      playing () {
-        Bus.$emit('playing', this.movie);
-      },
-
-      showEdit () {
-        Bus.$emit('showEdit', this.movie);
-      },
-
-      confirmDelete () {
-        Bus.$emit('confirmDelete', this.movie);
-      },
+    showEdit() {
+      Bus.$emit('showEdit', this.movie);
     },
-  };
+
+    confirmDelete() {
+      Bus.$emit('confirmDelete', this.movie);
+    },
+  },
+};
 </script>

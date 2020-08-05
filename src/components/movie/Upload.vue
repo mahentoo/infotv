@@ -66,81 +66,81 @@
 </template>
 
 <script>
-  import { Bus } from '@/main';
+import { Bus } from '@/main';
 
-  const axios = require('axios');
+const axios = require('axios');
 
-  export default {
-    name: 'Upload',
+export default {
+  name: 'Upload',
 
-    created () {
-      Bus.$on('showEdit', (movie) => this.toggleDialog(movie));
+  created() {
+    Bus.$on('showEdit', (movie) => this.toggleDialog(movie));
+  },
+
+  data: () => ({
+    movie: {
+      name: '',
     },
+    errors: null,
+    showDialog: false,
+  }),
 
-    data: () => ({
-      movie: {
-        name: '',
-      },
-      errors: null,
-      showDialog: false,
-    }),
+  methods: {
+    save() {
+      const token = localStorage.getItem('token');
 
-    methods: {
-      save () {
-        const token = localStorage.getItem('token');
+      const formData = new FormData();
 
-        let formData = new FormData();
+      formData.append('name', this.movie.name);
+      formData.append('movie', this.movie.file);
+      formData.append('thumb', this.movie.thumb);
+      formData.append('length', this.movie.length);
 
-        formData.append('name', this.movie.name);
-        formData.append('movie', this.movie.file);
-        formData.append('thumb', this.movie.thumb);
-        formData.append('length', this.movie.length);
+      this.errors = null;
 
-        this.errors = null;
+      let url = 'http://front-test.diga.net.br/api/movie/upload';
+      let mutation = 'add';
 
-        let url = 'http://front-test.diga.net.br/api/movie/upload';
-        let mutation = 'add';
+      if (this.movie.id) {
+        url = `http://front-test.diga.net.br/api/movie/update/${this.movie.id}`;
+        mutation = 'update';
+      }
 
-        if (this.movie.id) {
-          url = 'http://front-test.diga.net.br/api/movie/update/' + this.movie.id;
-          mutation = 'update';
-        }
+      axios
+        .post(url, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(({ data }) => {
+          if (data.error) {
+            this.errors = data.response.validation;
 
-        axios
-          .post(url, formData, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then(({ data }) => {
-            if (data.error) {
-              this.errors = data.response.validation;
+            return;
+          }
 
-              return;
-            }
+          let { movie } = data.response;
 
-            let movie = data.response.movie;
+          if (this.movie.id) {
+            movie = data.response.response.movie;
+          }
 
-            if (this.movie.id) {
-              movie = data.response.response.movie;
-            }
-
-            this.$store.commit(mutation, {
-              movie,
-              oldMovie: this.movie,
-            });
-
-            this.toggleDialog();
-          })
-          .catch((error) => {
-            console.log(error);
+          this.$store.commit(mutation, {
+            movie,
+            oldMovie: this.movie,
           });
-      },
 
-      toggleDialog (movie = { name: '' }) {
-        this.movie = movie;
-        this.showDialog = ! this.showDialog;
-      },
+          this.toggleDialog();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-  };
+
+    toggleDialog(movie = { name: '' }) {
+      this.movie = movie;
+      this.showDialog = !this.showDialog;
+    },
+  },
+};
 </script>

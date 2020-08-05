@@ -73,43 +73,43 @@
 </template>
 
 <script>
-  const axios = require('axios');
+const axios = require('axios');
 
-  export default {
-    name: 'Signup',
+export default {
+  name: 'Signup',
 
-    data: () => ({
-      name: '',
-      email: '',
-      password: '',
-      password_confirmation: '',
-      errors: null,
-    }),
+  data: () => ({
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    errors: null,
+  }),
 
-    methods: {
-      signup () {
-        this.errors = null;
+  methods: {
+    signup() {
+      this.errors = null;
 
-        axios
-          .post('http://front-test.diga.net.br/api/signup', {
-            name: this.name,
-            email: this.email,
-            password: this.password,
-            password_confirmation: this.password_confirmation,
-          })
-          .then(({ data }) => {
-            if (data.error) {
-              this.errors = data.response.validation;
+      axios
+        .post('http://front-test.diga.net.br/api/signup', {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation,
+        })
+        .then(({ data }) => {
+          if (data.error) {
+            this.errors = data.response.validation;
 
-              return;
-            }
+            return;
+          }
 
-            this.$router.push('/');
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
+          this.$router.push('/');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-  };
+  },
+};
 </script>

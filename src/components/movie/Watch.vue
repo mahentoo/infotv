@@ -8,36 +8,36 @@
 </template>
 
 <script>
-  import 'video.js/dist/video-js.css';
+import 'video.js/dist/video-js.css';
 
-  import { videoPlayer } from 'vue-video-player';
+import { videoPlayer } from 'vue-video-player';
 
-  export default {
-    name: 'Watch',
+export default {
+  name: 'Watch',
 
-    components: {
-      videoPlayer,
+  components: {
+    videoPlayer,
+  },
+
+  props: {
+    movie: {
+      type: Object,
+      required: true,
     },
+  },
 
-    props: {
-      movie: {
-        type: Object,
-        required: true,
-      },
+  computed: {
+    playerOptions() {
+      return {
+        language: 'en',
+        playbackRates: [0.7, 1.0, 1.5, 2.0],
+        sources: [{
+          type: 'video/mp4',
+          src: this.movie.file_path,
+        }],
+        poster: this.movie.thumb_path,
+      };
     },
-
-    computed: {
-      playerOptions () {
-        return {
-          language: 'en',
-          playbackRates: [0.7, 1.0, 1.5, 2.0],
-          sources: [{
-            type: 'video/mp4',
-            src: this.movie.file_path,
-          }],
-          poster: this.movie.thumb_path,
-        };
-      },
-    },
-  };
+  },
+};
 </script>
