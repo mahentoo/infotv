@@ -11,8 +11,6 @@ Vue.component('MovieUpload', require('./components/movie/Upload.vue').default);
 
 Vue.config.productionTip = false;
 
-export const Bus = new Vue();
-
 new Vue({
   router,
   vuetify,
