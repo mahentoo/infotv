@@ -30,74 +30,74 @@
 </template>
 
 <script>
-  import { Bus } from '@/main';
+import Bus from '@/bus';
 
-  const axios = require('axios');
+const axios = require('axios');
 
-  export default {
-    name: 'Main',
+export default {
+  name: 'Main',
 
-    created () {
-      Bus.$on('playing', (movie) => this.toPlay(movie));
-      Bus.$on('confirmDelete', (movie) => this.confirmDelete(movie));
+  created() {
+    Bus.$on('playing', (movie) => this.toPlay(movie));
+    Bus.$on('confirmDelete', (movie) => this.confirmDelete(movie));
+  },
+
+  data: () => ({
+    token: localStorage.getItem('token'),
+    showUpload: false,
+    playing: false,
+    dialogDelete: false,
+    movieToPlay: {},
+    movieToDelete: {},
+  }),
+
+  watch: {
+    token: {
+      handler(token) {
+        if (!token) {
+          this.$router.push('/signin');
+        }
+      },
+      immediate: true,
     },
+  },
 
-    data: () => ({
-      token: localStorage.getItem('token'),
-      showUpload: false,
-      playing: false,
-      dialogDelete: false,
-      movieToPlay: {},
-      movieToDelete: {},
-    }),
+  methods: {
+    remove() {
+      const token = localStorage.getItem('token');
 
-    watch: {
-      token: {
-        handler: function (token) {
-          if (! token) {
-            this.$router.push('/signin');
+      axios
+        .delete(`http://front-test.diga.net.br/api/movie/${this.movieToDelete.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        })
+        .then(({ data }) => {
+          if (data.error) {
+            this.error = data.response.message;
+
+            return;
           }
-        },
-        immediate: true,
-      },
+
+          this.dialogDelete = false;
+
+          this.$store.commit('remove', this.movieToDelete);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
 
-    methods: {
-      remove () {
-        const token = localStorage.getItem('token');
-
-        axios
-          .delete('http://front-test.diga.net.br/api/movie/' + this.movieToDelete.id, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-          })
-          .then(({ data }) => {
-            if (data.error) {
-              this.error = data.response.message;
-
-              return;
-            }
-
-            this.dialogDelete = false;
-
-            this.$store.commit('remove', this.movieToDelete);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-
-      toPlay (movie = {}) {
-        this.movieToPlay = movie;
-        this.playing = true;
-      },
-
-      confirmDelete (movie = {}) {
-        this.movieToDelete = movie;
-        this.dialogDelete = ! this.dialogDelete;
-      },
+    toPlay(movie = {}) {
+      this.movieToPlay = movie;
+      this.playing = true;
     },
-  };
+
+    confirmDelete(movie = {}) {
+      this.movieToDelete = movie;
+      this.dialogDelete = !this.dialogDelete;
+    },
+  },
+};
 </script>

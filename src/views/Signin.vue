@@ -45,46 +45,46 @@
 </template>
 
 <script>
-  import { Bus } from '@/main';
+import Bus from '@/bus';
 
-  const axios = require('axios');
+const axios = require('axios');
 
-  export default {
-    name: 'Signin',
+export default {
+  name: 'Signin',
 
-    data: () => ({
-      email: '',
-      error: '',
-      password: '',
-    }),
+  data: () => ({
+    email: '',
+    error: '',
+    password: '',
+  }),
 
-    methods: {
-      signin () {
-        this.error = '';
+  methods: {
+    signin() {
+      this.error = '';
 
-        axios
-          .post('http://front-test.diga.net.br/api/signin', {
-            email: this.email,
-            password: this.password,
-          })
-          .then(({ data }) => {
-            if (data.error) {
-              this.error = data.response.message;
+      axios
+        .post('http://front-test.diga.net.br/api/signin', {
+          email: this.email,
+          password: this.password,
+        })
+        .then(({ data }) => {
+          if (data.error) {
+            this.error = data.response.message;
 
-              return;
-            }
+            return;
+          }
 
-            localStorage.setItem('user', JSON.stringify(data.response.user));
-            localStorage.setItem('token', data.response.token);
+          localStorage.setItem('user', JSON.stringify(data.response.user));
+          localStorage.setItem('token', data.response.token);
 
-            Bus.$emit('currentUserUpdated');
+          Bus.$emit('currentUserUpdated');
 
-            this.$router.push('/main');
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
+          this.$router.push('/main');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-  };
+  },
+};
 </script>

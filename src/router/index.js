@@ -1,14 +1,14 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Main from '../views/Main.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Main from '../views/Main.vue';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-  const routes = [
+const routes = [
   {
     path: '/main',
     name: 'Main',
-    component: Main
+    component: Main,
   },
   {
     path: '/signin',
@@ -20,10 +20,10 @@ Vue.use(VueRouter)
     name: 'Signup',
     component: () => import('../views/Signup.vue'),
   },
-]
+];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

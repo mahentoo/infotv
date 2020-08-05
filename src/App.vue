@@ -60,29 +60,29 @@
 </template>
 
 <script>
-  import { Bus } from '@/main';
+import Bus from '@/bus';
 
-  export default {
-    name: 'App',
+export default {
+  name: 'App',
 
-    created () {
-      Bus.$on('currentUserUpdated', () => this.reloadCurrentUser());
+  created() {
+    Bus.$on('currentUserUpdated', () => this.reloadCurrentUser());
+  },
+
+  data: () => ({
+    currentUser: JSON.parse(localStorage.getItem('user')),
+  }),
+
+  methods: {
+    reloadCurrentUser() {
+      this.currentUser = JSON.parse(localStorage.getItem('user'));
     },
 
-    data: () => ({
-      currentUser: JSON.parse(localStorage.getItem('user')),
-    }),
+    logout() {
+      localStorage.clear();
 
-    methods: {
-      reloadCurrentUser () {
-        this.currentUser = JSON.parse(localStorage.getItem('user'));
-      },
-
-      logout () {
-        localStorage.clear();
-
-        Bus.$emit('currentUserUpdated');
-      },
+      Bus.$emit('currentUserUpdated');
     },
-  };
+  },
+};
 </script>
