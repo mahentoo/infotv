@@ -151,6 +151,8 @@ export default {
 
     getInfo(file = null) {
       if (!file) {
+        this.movie.length = NaN;
+
         return;
       }
 
