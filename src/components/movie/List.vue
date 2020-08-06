@@ -1,5 +1,9 @@
 <template>
   <v-layout wrap>
+    <v-flex class="text-xs-center" v-if="message">
+      <span class="red--text">{{ message }}</span>
+    </v-flex>
+
     <v-sheet :key="movie.id" v-for="movie in movies">
       <movie-card :movie="movie"></movie-card>
     </v-sheet>
@@ -17,7 +21,7 @@ export default {
   },
 
   data: () => ({
-    error: '',
+    message: '',
   }),
 
   computed: {
@@ -30,7 +34,7 @@ export default {
     list() {
       const token = localStorage.getItem('token');
 
-      this.error = '';
+      this.message = '';
 
       axios
         .get('http://front-test.diga.net.br/api/movie', {
@@ -40,7 +44,7 @@ export default {
         })
         .then(({ data }) => {
           if (data.error) {
-            this.error = data.response.message;
+            this.message = data.response.message;
 
             return;
           }

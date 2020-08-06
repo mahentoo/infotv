@@ -18,6 +18,10 @@
         <v-row>
           <v-col>
             <v-layout column>
+              <v-flex class="text-xs-center" v-if="message">
+                <span class="red--text">{{ message }}</span>
+              </v-flex>
+
               <v-flex>
                 <v-text-field
                   id="name"
@@ -81,6 +85,7 @@ export default {
     movie: {
       name: '',
     },
+    message: '',
     errors: null,
     showDialog: false,
   }),
@@ -96,6 +101,7 @@ export default {
       formData.append('thumb', this.movie.thumb);
       formData.append('length', this.movie.length);
 
+      this.message = '';
       this.errors = null;
 
       let url = 'http://front-test.diga.net.br/api/movie/upload';
@@ -115,6 +121,7 @@ export default {
         .then(({ data }) => {
           if (data.error) {
             this.errors = data.response.validation;
+            this.message = data.response.message;
 
             return;
           }
