@@ -42,6 +42,7 @@
                   label="Arquivo"
                   accept="video/mp4"
                   prepend-icon=""
+                  @change="getInfo"
                   v-model="movie.file"
                   show-size
                 ></v-file-input>
@@ -79,6 +80,9 @@ export default {
 
   created() {
     Bus.$on('showEdit', (movie) => this.toggleDialog(movie));
+
+    this.video = document.createElement('video');
+    this.video.onloadedmetadata = () => this.setInfo();
   },
 
   data: () => ({
@@ -86,6 +90,7 @@ export default {
       name: '',
     },
     message: '',
+    video: null,
     errors: null,
     showDialog: false,
   }),
@@ -142,6 +147,18 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+
+    getInfo(file = null) {
+      if (!file) {
+        return;
+      }
+
+      this.video.src = URL.createObjectURL(file);
+    },
+
+    setInfo() {
+      this.movie.length = this.video.duration;
     },
 
     toggleDialog(movie = { name: '' }) {
