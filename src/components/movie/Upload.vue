@@ -47,6 +47,7 @@
                   show-size
                 ></v-file-input>
               </v-flex>
+
               <v-flex class="text-xs-center" v-if="errors && errors.movie">
                 <span class="red--text">{{ errors.movie[0] }}</span>
               </v-flex>
@@ -160,7 +161,7 @@ export default {
     },
 
     setInfo() {
-      this.movie.length = this.video.duration;
+      this.movie.length = parseInt(this.video.duration, 10);
     },
 
     toggleDialog(movie = { name: '' }) {
