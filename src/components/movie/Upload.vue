@@ -35,7 +35,7 @@
                 <span class="red--text">{{ errors.name[0] }}</span>
               </v-flex>
 
-              <v-flex>
+              <v-flex v-show="! movie.id">
                 <v-file-input
                   id="movie"
                   name="movie"
