@@ -159,6 +159,20 @@ export default {
         return;
       }
 
+      if ('srcObject' in this.video) {
+        try {
+          this.video.srcObject = file;
+        } catch (err) {
+          if (err.name !== 'TypeError') {
+            throw err;
+          }
+
+          this.video.src = URL.createObjectURL(file);
+        }
+
+        return;
+      }
+
       this.video.src = URL.createObjectURL(file);
     },
 
