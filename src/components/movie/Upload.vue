@@ -65,7 +65,9 @@
       <v-card-actions class="px-6 pb-6">
         <v-spacer></v-spacer>
         <v-btn @click="toggleDialog()" rounded>Cancelar</v-btn>
-        <v-btn color="primary" @click="save(movie)" rounded>Enviar</v-btn>
+        <v-btn color="primary" @click="save(movie)" :disabled="! movie.length" rounded>
+          Enviar
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -91,6 +93,7 @@ export default {
   data: () => ({
     movie: {
       name: '',
+      length: NaN,
     },
     message: '',
     video: null,
