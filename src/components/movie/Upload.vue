@@ -144,7 +144,7 @@ export default {
 
           this.$store.commit(mutation, {
             movie,
-            oldMovie: this.movie,
+            oldMovie: this.editing,
           });
 
           this.toggleDialog();
@@ -223,7 +223,8 @@ export default {
     },
 
     toggleDialog(movie = { name: '' }) {
-      this.movie = movie;
+      this.editing = movie;
+      this.movie = { ...movie };
       this.showDialog = !this.showDialog;
     },
   },
