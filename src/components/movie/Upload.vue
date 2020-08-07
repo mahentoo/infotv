@@ -84,6 +84,7 @@ export default {
 
     this.video = document.createElement('video');
     this.video.onloadedmetadata = () => this.setMovieLength();
+    this.video.onloadeddata = () => this.play();
   },
 
   data: () => ({
@@ -162,6 +163,10 @@ export default {
 
     setMovieLength() {
       this.movie.length = parseInt(this.video.duration, 10);
+    },
+
+    play() {
+      this.video.play();
     },
 
     toggleDialog(movie = { name: '' }) {
