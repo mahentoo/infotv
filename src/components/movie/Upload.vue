@@ -65,7 +65,9 @@
       <v-card-actions class="px-6 pb-6">
         <v-spacer></v-spacer>
         <v-btn @click="toggleDialog()" rounded>Cancelar</v-btn>
-        <v-btn color="primary" @click="save(movie)" rounded>Enviar</v-btn>
+        <v-btn color="primary" @click="save(movie)" :disabled="! movie.length" rounded>
+          Enviar
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -83,14 +85,14 @@ export default {
     Bus.$on('showEdit', (movie) => this.toggleDialog(movie));
 
     this.video = document.createElement('video');
-    this.video.onloadedmetadata = () => this.setMovieLength();
     this.video.onloadeddata = () => this.play();
-    this.video.ontimeupdate = () => this.setMovieThumb();
+    this.video.ontimeupdate = () => this.setInfo();
   },
 
   data: () => ({
     movie: {
       name: '',
+      length: NaN,
     },
     message: '',
     video: null,
@@ -152,6 +154,10 @@ export default {
         });
     },
 
+    play() {
+      this.video.play();
+    },
+
     getInfo(file = null) {
       if (!file) {
         this.movie.length = NaN;
@@ -176,12 +182,13 @@ export default {
       this.video.src = URL.createObjectURL(file);
     },
 
-    setMovieLength() {
-      this.movie.length = parseInt(this.video.duration, 10);
+    setInfo() {
+      this.setMovieLength();
+      this.setMovieThumb();
     },
 
-    play() {
-      this.video.play();
+    setMovieLength() {
+      this.movie.length = parseInt(this.video.duration, 10);
     },
 
     setMovieThumb() {
