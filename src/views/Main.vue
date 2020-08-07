@@ -21,6 +21,7 @@
           Deseja mesmo remover o vídeo {{ movieToDelete.name }}?
         </v-card-text>
         <v-card-actions>
+          <v-spacer></v-spacer>
           <v-btn @click="dialogDelete = false" rounded>Cancelar</v-btn>
           <v-btn color="primary" @click="remove()" rounded>Remover</v-btn>
         </v-card-actions>

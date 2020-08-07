@@ -18,6 +18,10 @@
         <v-row>
           <v-col>
             <v-layout column>
+              <v-flex class="text-xs-center" v-if="message">
+                <span class="red--text">{{ message }}</span>
+              </v-flex>
+
               <v-flex>
                 <v-text-field
                   id="name"
@@ -38,10 +42,12 @@
                   label="Arquivo"
                   accept="video/mp4"
                   prepend-icon=""
+                  @change="getInfo"
                   v-model="movie.file"
                   show-size
                 ></v-file-input>
               </v-flex>
+
               <v-flex class="text-xs-center" v-if="errors && errors.movie">
                 <span class="red--text">{{ errors.movie[0] }}</span>
               </v-flex>
@@ -75,12 +81,19 @@ export default {
 
   created() {
     Bus.$on('showEdit', (movie) => this.toggleDialog(movie));
+
+    this.video = document.createElement('video');
+    this.video.onloadedmetadata = () => this.setMovieLength();
+    this.video.onloadeddata = () => this.play();
+    this.video.ontimeupdate = () => this.setMovieThumb();
   },
 
   data: () => ({
     movie: {
       name: '',
     },
+    message: '',
+    video: null,
     errors: null,
     showDialog: false,
   }),
@@ -96,6 +109,7 @@ export default {
       formData.append('thumb', this.movie.thumb);
       formData.append('length', this.movie.length);
 
+      this.message = '';
       this.errors = null;
 
       let url = 'http://front-test.diga.net.br/api/movie/upload';
@@ -115,6 +129,7 @@ export default {
         .then(({ data }) => {
           if (data.error) {
             this.errors = data.response.validation;
+            this.message = data.response.message;
 
             return;
           }
@@ -135,6 +150,69 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+
+    getInfo(file = null) {
+      if (!file) {
+        this.movie.length = NaN;
+
+        return;
+      }
+
+      if ('srcObject' in this.video) {
+        try {
+          this.video.srcObject = file;
+        } catch (err) {
+          if (err.name !== 'TypeError') {
+            throw err;
+          }
+
+          this.video.src = URL.createObjectURL(file);
+        }
+
+        return;
+      }
+
+      this.video.src = URL.createObjectURL(file);
+    },
+
+    setMovieLength() {
+      this.movie.length = parseInt(this.video.duration, 10);
+    },
+
+    play() {
+      this.video.play();
+    },
+
+    setMovieThumb() {
+      this.video.pause();
+
+      const canvas = document.createElement('canvas');
+
+      canvas.width = this.video.videoWidth;
+      canvas.height = this.video.videoHeight;
+
+      canvas.getContext('2d').drawImage(this.video, 0, 0, canvas.width, canvas.height);
+
+      this.movie.thumb = this.dataURItoBlob(canvas.toDataURL('image/jpeg'));
+    },
+
+    dataURItoBlob(dataURI) {
+      let byteString = unescape(dataURI.split(',')[1]);
+
+      if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+        byteString = atob(dataURI.split(',')[1]);
+      }
+
+      const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+      const ia = new Uint8Array(byteString.length);
+
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+
+      return new Blob([ia], { type: mimeString });
     },
 
     toggleDialog(movie = { name: '' }) {
