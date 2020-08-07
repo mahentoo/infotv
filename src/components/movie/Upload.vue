@@ -154,6 +154,10 @@ export default {
         });
     },
 
+    play() {
+      this.video.play();
+    },
+
     getInfo(file = null) {
       if (!file) {
         this.movie.length = NaN;
@@ -185,10 +189,6 @@ export default {
 
     setMovieLength() {
       this.movie.length = parseInt(this.video.duration, 10);
-    },
-
-    play() {
-      this.video.play();
     },
 
     setMovieThumb() {
