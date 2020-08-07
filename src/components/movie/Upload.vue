@@ -83,7 +83,7 @@ export default {
     Bus.$on('showEdit', (movie) => this.toggleDialog(movie));
 
     this.video = document.createElement('video');
-    this.video.onloadedmetadata = () => this.setInfo();
+    this.video.onloadedmetadata = () => this.setMovieLength();
   },
 
   data: () => ({
@@ -160,7 +160,7 @@ export default {
       this.video.src = URL.createObjectURL(file);
     },
 
-    setInfo() {
+    setMovieLength() {
       this.movie.length = parseInt(this.video.duration, 10);
     },
 
