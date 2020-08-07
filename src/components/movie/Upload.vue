@@ -85,6 +85,7 @@ export default {
     this.video = document.createElement('video');
     this.video.onloadedmetadata = () => this.setMovieLength();
     this.video.onloadeddata = () => this.play();
+    this.video.ontimeupdate = () => this.setMovieThumb();
   },
 
   data: () => ({
@@ -167,6 +168,37 @@ export default {
 
     play() {
       this.video.play();
+    },
+
+    setMovieThumb() {
+      this.video.pause();
+
+      const canvas = document.createElement('canvas');
+
+      canvas.width = this.video.videoWidth;
+      canvas.height = this.video.videoHeight;
+
+      canvas.getContext('2d').drawImage(this.video, 0, 0, canvas.width, canvas.height);
+
+      this.movie.thumb = this.dataURItoBlob(canvas.toDataURL('image/jpeg'));
+    },
+
+    dataURItoBlob(dataURI) {
+      let byteString = unescape(dataURI.split(',')[1]);
+
+      if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+        byteString = atob(dataURI.split(',')[1]);
+      }
+
+      const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+      const ia = new Uint8Array(byteString.length);
+
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+
+      return new Blob([ia], { type: mimeString });
     },
 
     toggleDialog(movie = { name: '' }) {
